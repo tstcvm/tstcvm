@@ -7,7 +7,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteUrl()
   const [news, events] = await Promise.all([getPublishedNews(), getPublicEvents()])
 
-  const staticPaths = ['', '/news', '/events', '/about', '/join']
+  const staticPaths = ['', '/news', '/events', '/about', '/join', '/privacy', '/terms']
   const entries: MetadataRoute.Sitemap = []
 
   for (const p of staticPaths) {

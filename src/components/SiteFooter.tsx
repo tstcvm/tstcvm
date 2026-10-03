@@ -26,6 +26,16 @@ export default async function SiteFooter({ locale }: { locale: Locale }) {
             <li><Link href={lp(locale, '/events')} className="hover:text-crimson">{d.nav.events}</Link></li>
             <li><Link href={lp(locale, '/about')} className="hover:text-crimson">{d.nav.about}</Link></li>
             <li><Link href={lp(locale, '/join')} className="hover:text-crimson">{d.nav.join}</Link></li>
+            <li>
+              <Link href={lp(locale, '/privacy')} className="hover:text-crimson">
+                {locale === 'th' ? 'นโยบายความเป็นส่วนตัว' : 'Privacy policy'}
+              </Link>
+            </li>
+            <li>
+              <Link href={lp(locale, '/terms')} className="hover:text-crimson">
+                {locale === 'th' ? 'ข้อกำหนดการใช้งาน' : 'Terms of service'}
+              </Link>
+            </li>
           </ul>
         </div>
 
