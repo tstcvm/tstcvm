@@ -33,3 +33,21 @@ superadmin เท่านั้นที่เปลี่ยน role ได้
 - `supabase-schema.sql` — ตาราง + RLS + trigger + bucket + policy (รันซ้ำได้)
 - `src/lib/actions/*` — server action ทั้งหมด (membership / registration / profile / admin)
 - `src/lib/queries.ts` — query ของหน้า public (มี guard `hasSupabase` ให้ build ผ่านตอนไม่มี env)
+
+## Migration ที่รันแล้ว
+
+- `supabase-schema.sql` (2026-10-03) — ตาราง/RLS/trigger/bucket ครบ
+- `supabase-migration-002-guards.sql` (2026-10-03) — บังคับให้ `fee_amount`/`rate_type` คิดจาก DB
+  (`event_fee_for()`, `rate_type_for()`, `settings.membership_fees`) และแก้บั๊กที่ผู้ใช้ซึ่งยกเลิก
+  การลงทะเบียนแล้วกลับมาลงทะเบียนงานเดิมไม่ได้
+
+รัน migration ใหม่ด้วย Management API (token อยู่ใน keychain ชื่อ `supabase-mgmt-tstcvm`):
+`python3 <scratchpad>/run_sql.py <file.sql>` — หรือดู README
+
+## บัญชีและค่าที่เกี่ยวข้อง
+
+- Supabase project ref `dgjkvhwkjnoeqqezoozi` (org `tstcvm's Org`)
+- Vercel `tstcvm/tstcvm` → **https://tstcvm.vercel.app**
+- GitHub `tstcvm/tstcvm` (บัญชีแยกจาก armmani, PAT classic อยู่ใน keychain, `credential.useHttpPath=true`)
+- Google Cloud project `quixotic-module-510510-p0` ในบัญชี `tstcvm.th@gmail.com` (authuser=5 ใน Chrome)
+  OAuth client "TSTCVM Web" · consent screen **In production** แล้ว
