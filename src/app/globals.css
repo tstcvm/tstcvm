@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* กระดาษสา — พื้นหลังหลัก */
+  --paper: #faf7f2;
+  --surface: #ffffff;
+  --ink: #241f1c;
+  --muted: #6b625b;
+  --line: #e7e0d6;
+  /* ชาด — สีหลักของชมรม */
+  --crimson: #8c2f2a;
+  --crimson-dark: #6d211d;
+  --crimson-soft: #f6ece9;
+  /* ทอง */
+  --gold: #b4893a;
+  --gold-soft: #f8f1e2;
+  /* หยก */
+  --jade: #2d6a56;
+  --jade-soft: #e9f2ee;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-crimson: var(--crimson);
+  --color-crimson-dark: var(--crimson-dark);
+  --color-crimson-soft: var(--crimson-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-jade: var(--jade);
+  --color-jade-soft: var(--jade-soft);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* เส้นคั่นลายจีนบาง ๆ ใต้หัวข้อหลัก */
+.rule-gold {
+  background: linear-gradient(90deg, var(--gold) 0%, rgba(180, 137, 58, 0.15) 100%);
+}
+
+.prose-tcvm {
+  line-height: 1.85;
+}
+.prose-tcvm h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 2rem 0 0.75rem;
+  color: var(--crimson-dark);
+}
+.prose-tcvm h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.5rem;
+}
+.prose-tcvm p {
+  margin: 0.9rem 0;
+}
+.prose-tcvm ul,
+.prose-tcvm ol {
+  margin: 0.9rem 0 0.9rem 1.25rem;
+  list-style: disc;
+}
+.prose-tcvm ol {
+  list-style: decimal;
+}
+.prose-tcvm li {
+  margin: 0.35rem 0;
+}
+.prose-tcvm a {
+  color: var(--crimson);
+  text-decoration: underline;
+}
+.prose-tcvm blockquote {
+  border-left: 3px solid var(--gold);
+  padding-left: 1rem;
+  color: var(--muted);
+  margin: 1rem 0;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
 }
